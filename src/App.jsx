@@ -1,38 +1,31 @@
-import React from 'react'
-
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar } from "./Components/Navbar";
+import React from 'react';
+import Navbar from './Components/Navbar'
 import { Shop } from "./pages/shop/Shop";
-//import { Contact } from "./pages/contact";
+import { Contact } from "./pages/Contact";
 import { Cart } from "./pages/cart/Cart";
-//import { ShopContextProvider } from "./context/shop-context";
+import { ShopContextProvider } from "./context/ShopContext";
 
-
-//import Form from './Components/Form'
 
 function App() {
   
 
   return (
-   /* <>
-     <Form/>
-    
-    </>
-    */
+  
+<>
+<ShopContextProvider>
+<Navbar />
+<Shop />
+<Contact />
+  <Cart />
+</ShopContextProvider>
 
-    <div className="App">
+</>
+    
+        
+         
+          
       
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Shop />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </Router>
-      
-    </div>
+    
 
   )
 }

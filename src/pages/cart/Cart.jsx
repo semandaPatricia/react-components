@@ -1,24 +1,26 @@
 
 import React from 'react'
-import { ShopContext } from "../../context/shop-context";
-import { PRODUCTS } from "../../products";
+import { ShopContext } from "../../context/ShopContext";
+
 import { CartItem } from "./CartItem";
 import { useNavigate } from "react-router-dom";
-import './Cart.css'
+//import './Cart.css'
+import { Bikinis } from '../../data/products';
 
 const Cart = () => {
     const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
     const totalAmount = getTotalCartAmount();
   
     const navigate = useNavigate();
+
   return (
     <div>
- <div className="cart">
+ <div className="cart flex flex-col justify-center items-center">
       <div>
-        <h1>Your Cart Items</h1>
+        <h1 className='text-xl'>Your Cart Items</h1>
       </div>
-      <div className="cart">
-        {PRODUCTS.map((product) => {
+      <div className="flex flex-col">
+        {Bikinis.map((product) => {
           if (cartItems[product.id] !== 0) {
             return <CartItem data={product} />;
           }
@@ -29,7 +31,7 @@ const Cart = () => {
         <div className="checkout">
           <p> Subtotal: ${totalAmount} </p>
           <button onClick={() => navigate("/")}> Continue Shopping </button>
-          <button
+          <button className='bg-gray-500 text-white border-r-4 m-2 cursor-pointer w-40 h-12'
             onClick={() => {
               checkout();
               navigate("/checkout");

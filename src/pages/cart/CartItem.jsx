@@ -1,13 +1,14 @@
-import React from 'react'
-import { ShopContext } from "../../context/shop-context";
+import React, { useContext } from "react";
+import { ShopContext } from "../../context/ShopContext";
 
 const CartItem = (props) => {
     const { id, productName, price, productImage } = props.data;
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
     useContext(ShopContext);
+
   return (
     <div>
- <div className="cartItem">
+ <div className="cartItem flex items-center m-8 ">
       <img src={productImage} />
       <div className="description">
         <p>
